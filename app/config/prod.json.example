@@ -1,5 +1,5 @@
 {
-    "debug": true,
+    "debug": false,
     "userName": "your user name",
     "password": "your password",
     "baseUri": "https://api-qa1.video-cdn.net/v1/vms/",
