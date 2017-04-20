@@ -9,16 +9,16 @@ use Yartikh\Image\Generator;
 $app->get('/image/{videoId}/{timestamp}', function (Application $app, $videoId, $timestamp) {
 
     // make an API client
-    $credentials = new ApiCredentials($app['config']['userName'], $app['config']['password']);
+    $credentials = new ApiCredentials($app['userName'], $app['password']);
     $factory     = new ApiClientFactory();
 
-    $apiClient = new Client($factory->createSimple($app['config']['baseUri'], $credentials));
+    $apiClient = new Client($factory->createSimple($app['baseUri'], $credentials));
 
     // get the video download urls
     try {
         $videoUrls = json_decode(
             $apiClient->getDownloadVideoUrls(
-                $app['config']['videoManagerId'],
+                $app['videoManagerId'],
                 $videoId
             ),
             true
@@ -38,7 +38,7 @@ $app->get('/image/{videoId}/{timestamp}', function (Application $app, $videoId, 
     $time = gmdate("H:i:s", $timestamp);
 
     // generate the image
-    $generator = new Generator($app['config']['imagesFolder']);
+    $generator = new Generator($app['imagesFolder']);
 
     try {
         $imagePath = $generator->generateFromVideoUrl($mp4Url['url'], $time);

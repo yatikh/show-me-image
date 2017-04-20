@@ -1,0 +1,8 @@
+{
+    "debug": true,
+    "userName": "your user name",
+    "password": "your password",
+    "baseUri": "https://api-qa1.video-cdn.net/v1/vms/",
+    "videoManagerId": 97,
+    "imagesFolder": "%images_folder%"
+}

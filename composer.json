@@ -9,7 +9,8 @@
     ],
     "require": {
         "silex/silex": "^2.0",
-        "movingimage/vmpro-api-client": "^0.4.0"
+        "movingimage/vmpro-api-client": "^0.4.0",
+        "reva2/config-service-provider": "^2.0"
     },
     "autoload": {
         "psr-4": {
