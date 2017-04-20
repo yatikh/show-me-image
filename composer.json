@@ -1,0 +1,14 @@
+{
+    "name": "yartikh/show-me-image",
+    "description": "MovingImage24 Trial Day Challenge",
+    "authors": [
+        {
+            "name": "Yaroslav Tikhomirov",
+            "email": "yartikh@gmail.com"
+        }
+    ],
+    "require": {
+        "silex/silex": "^2.0",
+        "movingimage/vmpro-api-client": "^0.4.0"
+    }
+}
