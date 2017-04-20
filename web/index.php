@@ -29,7 +29,11 @@ $app->get('/image/{videoId}/{timestamp}', function (Application $app, $videoId, 
 
     $apiClient = new Client($factory->createSimple($baseUri, $credentials));
 
-    $videoUrls = json_decode($apiClient->getDownloadVideoUrls($videoManagerId, $videoId), true);
+    try {
+        $videoUrls = json_decode($apiClient->getDownloadVideoUrls($videoManagerId, $videoId), true);
+    } catch (\Exception $e) {
+        $app->abort(404, "Video can not be found.");
+    }
 
     // get the first mp4 video
     $mp4Urls = array_filter($videoUrls, function ($item) {
