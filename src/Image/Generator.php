@@ -41,11 +41,12 @@ class Generator
      * Generating image throug ffmpeg.
      *
      * @param  string $videoUrl
+     * @param  string $time
      * @return string Path for the new image.
      */
-    public function generateFromVideoUrl($videoUrl)
+    public function generateFromVideoUrl($videoUrl, $time)
     {
-        $imagePath = $this->getImagePath(sha1($videoUrl));
+        $imagePath = $this->getImagePath(sha1($videoUrl.$time));
 
         if (file_exists($imagePath)) {
             return $imagePath;
@@ -53,7 +54,8 @@ class Generator
 
         exec(
             sprintf(
-                'ffmpeg -ss 00:00:50 -i "%s" -vframes 1 -f image2 "%s"',
+                'ffmpeg -ss %s -i "%s" -vframes 1 -f image2 "%s"',
+                $time,
                 $videoUrl,
                 $imagePath
             ),

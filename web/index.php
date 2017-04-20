@@ -38,11 +38,14 @@ $app->get('/image/{videoId}/{timestamp}', function (Application $app, $videoId, 
 
     $mp4Url = current($mp4Urls);
 
+    // time for a still
+    $time = gmdate("H:i:s", $timestamp);
+
     // generate the image the path for generated image
     $generator = new Generator(__DIR__.'/images/');
 
     try {
-        $imagePath = $generator->generateFromVideoUrl($mp4Url['url']);
+        $imagePath = $generator->generateFromVideoUrl($mp4Url['url'], $time);
 
         $stream = function () use ($imagePath) {
             readfile($imagePath);
@@ -53,9 +56,7 @@ $app->get('/image/{videoId}/{timestamp}', function (Application $app, $videoId, 
 
     return $app->stream($stream, 200, ['Content-Type' => 'image/jpeg']);
 })
-->assert('videoId', '[0-9a-zA-Z_]+') // base60
 ->assert('timestamp', '\d+')
-->value('videoId', '2vkGzLuB-mSHJKgDSPbsUF')
 ->value('timestamp', 5);
 
 
