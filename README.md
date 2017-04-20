@@ -10,7 +10,7 @@ This project using for generating images from video through MovingImage REST API
 ### Installation
 
 * clone the project
-* composer update
+* `composer install`
 
 ### Running
 
