@@ -72,6 +72,6 @@ class Client
             $this->apiClient
         );
 
-        return $getDownloadVideoUrl($videoManagerId, $videoId);
+        return $getDownloadVideoUrl($videoManagerId, $videoId, $metadata);
     }
 }
